@@ -12,7 +12,7 @@ function submitForm(event) {
 
   let { delay, step, amount } = readingInputData();
   
-  for (i = 0; i < amount; i++) { 
+  for (let i = 0; i < amount; i++) { 
     createPromise(i, delay)
       .then(({ i, delay }) => {
         console.log(`✅ Fulfilled promise ${i} in ${delay}ms`);
