@@ -8,7 +8,7 @@ startTimerBtn.disabled = true
 
 const timePicker = document.querySelector("#datetime-picker")
 
-timerValue = {
+const timerValue = {
   days: document.querySelector("[data-days]"),
   hours: document.querySelector("[data-hours]"),
   minutes: document.querySelector("[data-minutes]"),
