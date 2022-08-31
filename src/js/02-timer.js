@@ -29,7 +29,7 @@ const options = {
     console.log(new Date())
 
     if (selectedDates[0] < new Date()) {
-      startTimerBtn.disabled = true
+      startTimerBtn.disabled = true;
       window.alert("Please choose a date in the future")
     } else {
       startTimerBtn.disabled = false
@@ -43,12 +43,18 @@ flatpickr(timePicker, options)
 function changeTimerValue(selectedTime) {
   const timer = {
     start() {
+      startTimerBtn.disabled = true;
+      timePicker.disabled = true;
+      
       const startTime = selectedTime
       timerId = setInterval(() => { 
         const currentTime = Date.now()
       
         const deltaTime = currentTime - startTime
+        // const realDeltaTime = deltaTime * -1
+        // console.log(realDeltaTime)
         const { days, hours, minutes, seconds } = convertMs(deltaTime)
+        console.log(`days = ${days}`)
 
         timerValue.days.textContent = days;
         timerValue.hours.textContent = hours;
@@ -56,23 +62,25 @@ function changeTimerValue(selectedTime) {
         timerValue.seconds.textContent = seconds;
         // console.log(days)
         // console.log(typeof (days))
+        console.log(deltaTime)
         
-        if (days === "01") {
-          timerValue.days.textContent = "00"
-        }
-
-        if (hours === "01") {
-          timerValue.hours.textContent = "00"
-        }
-
-        if (minutes === "01") {
-          timerValue.minutes.textContent = "00"
-        }
-
-        if (seconds <= 0) {
-          console.log("I'm worked")
+        if (deltaTime >= 0) {
           clearInterval(timerId)
+          console.log("I worked")
         }
+
+        // if (days === "01") {
+        //   timerValue.days.textContent = "00"
+        // }
+
+        // if (hours === "01") {
+        //   timerValue.hours.textContent = "00"
+        // }
+
+        // if (minutes === "01") {
+        //   timerValue.minutes.textContent = "00"
+        // }
+
       }, 1000)
     }
   }

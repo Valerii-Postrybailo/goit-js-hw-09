@@ -14,11 +14,11 @@ function submitForm(event) {
   
   for (let i = 0; i < amount; i++) { 
     createPromise(i, delay)
-      .then(({ i, delay }) => {
+      .then(({ position, delay }) => {
         console.log(`✅ Fulfilled promise ${i} in ${delay}ms`);
       })
 
-      .catch(({ i, delay }) => {
+      .catch(({ position, delay }) => {
         console.log(`❌ Rejected promise ${i} in ${delay}ms`);
       });
     delay += step;
