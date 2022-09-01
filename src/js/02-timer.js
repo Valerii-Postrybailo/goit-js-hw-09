@@ -92,7 +92,9 @@ function changeTimerValue() {
   let timer = setInterval(() => {
     let countdown = new Date(timePicker.value) - new Date();
     startTimerBtn.disabled = true;
-    if (countdown > 0) {
+    timePicker.disabled = true;
+    console.log(countdown)
+    if (countdown >= 0) {
       let timerData = convertMs(countdown);
         timerValue.days.textContent = timerData.days;
         timerValue.hours.textContent = timerData.hours;
